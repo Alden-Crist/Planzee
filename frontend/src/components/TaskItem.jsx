@@ -10,9 +10,8 @@ import axios from "axios";
 import { isToday, format } from "date-fns";
 import TaskModal from "./TaskModal";
 
-const API_BASE = "http://localhost:4000/api/tasks";
-
 function TaskItem({ task, onRefresh, showCompleteCheckbox = true, onLogout }) {
+  const API_BASE = import.meta.env.VITE_API_URL;
   const [showMenu, setShowMenu] = useState(false);
   const [isCompleted, setIsCompleted] = useState(
     [true, 1, "yes"].includes(
@@ -49,7 +48,7 @@ function TaskItem({ task, onRefresh, showCompleteCheckbox = true, onLogout }) {
     const newStatus = isCompleted ? "No" : "yes";
     try {
       await axios.put(
-        `${API_BASE}/gp`,
+        `${API_BASE}/api/tasks/${task._id}/gp`,
         { completed: newStatus },
         {
           headers: getAuthHeader(),
@@ -71,7 +70,7 @@ function TaskItem({ task, onRefresh, showCompleteCheckbox = true, onLogout }) {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`${API_BASE}/${task._id}/gp`, {
+      await axios.delete(`${API_BASE}/api/tasks/${task._id}/gp`, {
         headers: getAuthHeader(),
       });
       onRefresh?.();
@@ -82,17 +81,14 @@ function TaskItem({ task, onRefresh, showCompleteCheckbox = true, onLogout }) {
 
   const handleSave = async (updatedTask) => {
     try {
-      const payload = (({
-        title,
-        description,
-        priority,
-        dueDate,
-        completed,
-      }) => ({ title, description, priority, dueDate, completed }))(
-        updatedTask
-      );
-
-      await axios.put(`${API_BASE}/${task._id}/gp`, payload, {
+      const payload = {
+        title: updatedTask.title,
+        description: updatedTask.description,
+        priority: updatedTask.priority,
+        dueDate: updatedTask.dueDate,
+        completed: !!updatedTask.completed, // ensure boolean
+      };
+      await axios.put(`${API_BASE}/api/tasks/${task._id}/gp`, payload, {
         headers: getAuthHeader(),
       });
       setShowEditModal(false);

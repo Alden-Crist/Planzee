@@ -9,10 +9,11 @@ import {
 } from "../assets/dummy";
 import axios from "axios";
 
-const API_URL = "http://localhost:4000";
 const INITIAL_FORM = { name: "", email: "", password: "" };
 
 const SignUp = ({ onSwitchMode }) => {
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const [formData, setFormData] = useState(INITIAL_FORM);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState({ text: "", type: "" });

@@ -20,9 +20,9 @@ import {
 } from "lucide-react";
 import axios from "axios";
 
-const API_URL = "http://localhost:4000";
-
 function Profile({ setCurrentUser, onLogout }) {
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const [profile, setProfile] = useState({ name: "", email: "" });
 
   const [passwords, setPasswords] = useState({

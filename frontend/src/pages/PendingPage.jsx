@@ -3,7 +3,7 @@ import { layoutClasses, SORT_OPTIONS } from "../assets/dummy";
 import { ListChecks } from "lucide-react";
 import { useOutletContext } from "react-router-dom";
 import TaskItem from "../components/TaskItem";
-import { Filter, Plus } from "lucide-react";
+import { Filter, Plus, Clock } from "lucide-react";
 import TaskModal from "../components/TaskModal";
 
 function PendingPage() {

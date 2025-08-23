@@ -5,10 +5,10 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Eye, EyeOff, LogIn, Mail, Lock } from "lucide-react";
 
-const API_URL = "http://localhost:4000";
 const INITIAL_FORM = { email: "", password: "" };
 
 const Login = ({ onSubmit, onSwitchMode }) => {
+  const API_URL = import.meta.env.VITE_API_URL;
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState(INITIAL_FORM);

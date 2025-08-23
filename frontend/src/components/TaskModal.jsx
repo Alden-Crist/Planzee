@@ -14,9 +14,9 @@ import {
   Flag,
 } from "lucide-react";
 
-const API_BASE = "http://localhost:4000/api/tasks";
-
 function TaskModal({ isOpen, onClose, taskToEdit, onSave, onLogout }) {
+  /* global process */
+  const API_BASE = import.meta.env.VITE_API_URL;
   const [taskData, setTaskData] = useState(DEFAULT_TASK);
 
   const [loading, setLoading] = useState(false);
@@ -74,7 +74,9 @@ function TaskModal({ isOpen, onClose, taskToEdit, onSave, onLogout }) {
       setError(null);
       try {
         const isEdit = Boolean(taskData.id);
-        const url = isEdit ? `${API_BASE}/${taskData.id}/gp` : `${API_BASE}/gp`;
+        const url = isEdit
+          ? `${API_BASE}/api/tasks/${taskData.id}/gp`
+          : `${API_BASE}/api/tasks/gp`;
 
         const resp = await fetch(url, {
           method: isEdit ? "PUT" : "POST",
