@@ -13,32 +13,26 @@ import TaskModal from "./TaskModal";
 function TaskItem({ task, onRefresh, showCompleteCheckbox = true, onLogout }) {
   const API_BASE = import.meta.env.VITE_API_URL;
   const [showMenu, setShowMenu] = useState(false);
-  // const [isCompleted, setIsCompleted] = useState(
-  //   [true, 1, "yes"].includes(
-  //     typeof task.isCompleted === "string"
-  //       ? task.isCompleted.toLowerCase()
-  //       : task.isCompleted
-  //   )
-  // );
-
-  const [isCompleted, setIsCompleted] = useState(!!task.completed);
-
-  useEffect(() => {
-    setIsCompleted(!!task.completed);
-  }, [task.completed]);
+  const [isCompleted, setIsCompleted] = useState(
+    [true, 1, "yes"].includes(
+      typeof task.isCompleted === "string"
+        ? task.isCompleted.toLowerCase()
+        : task.isCompleted
+    )
+  );
 
   const [showEditModal, setShowEditModal] = useState(false);
   const [subtasks, setSubTasks] = useState(task.subtasks || []);
 
-  // useEffect(() => {
-  //   setIsCompleted(
-  //     [true, 1, "yes"].includes(
-  //       typeof task.completed === "string"
-  //         ? task.completed.toLowerCase()
-  //         : task.completed
-  //     )
-  //   );
-  // }, [task.completed]);
+  useEffect(() => {
+    setIsCompleted(
+      [true, 1, "yes"].includes(
+        typeof task.completed === "string"
+          ? task.completed.toLowerCase()
+          : task.completed
+      )
+    );
+  }, [task.completed]);
 
   const getAuthHeader = () => {
     const token = localStorage.getItem("token");
@@ -51,7 +45,7 @@ function TaskItem({ task, onRefresh, showCompleteCheckbox = true, onLogout }) {
     : getPriorityColor(task.priority).split(" ")[0];
 
   const handleComplete = async () => {
-    const newStatus = !isCompleted;
+    const newStatus = isCompleted ? "No" : "Yes";
     try {
       await axios.put(
         `${API_BASE}/api/tasks/${task._id}/gp`,
