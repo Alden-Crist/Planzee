@@ -43,12 +43,12 @@ function CompletePage() {
     <div className={CT_CLASSES.header}>
       <div className={CT_CLASSES.titleWrapper}>
         <h1 className={CT_CLASSES.title}>
-          <CheckCircle2 className="text-purple-500 w-5 h-5 md:w-6 md:h-6" />
+          <CheckCircle2 className="text-teal-500 w-5 h-5 md:w-6 md:h-6" />
           <span className="truncate">Completed Tasks</span>
         </h1>
         <p className={CT_CLASSES.subtitle}>
           {loading ? (
-            <span className="inline-block h-4 w-12 bg-purple-200 rounded animate-pulse"></span>
+            <span className="inline-block h-4 w-12 bg-teal-200 rounded animate-pulse"></span>
           ) : (
             <>
               {sortedCompletedTasks.length} task
@@ -62,7 +62,7 @@ function CompletePage() {
       <div className={CT_CLASSES.sortContainer}>
         <div className={CT_CLASSES.sortBox}>
           <div className={CT_CLASSES.filterLabel}>
-            <Filter className="w-4 h-4 text-purple-500" />
+            <Filter className="w-4 h-4 text-teal-500" />
             <span className="text-x5 md:text-sm">Sort by:</span>
           </div>
 
@@ -111,24 +111,26 @@ function CompletePage() {
       <div className={CT_CLASSES.list}>
         {loading ? (
           // ✅ Skeleton Loader for Completed Tasks
-          Array.from({ length: 3 }).map((_, i) => (
+          Array.from({ length: 3
+
+           }).map((_, i) => (
             <div
               key={i}
-              className="flex items-center justify-between p-3 border-b border-purple-100 animate-pulse"
+              className="flex items-center justify-between p-3 border-b border-teal-100 animate-pulse"
             >
               {/* Left side (title + desc) */}
               <div className="flex-1 space-y-2">
-                <div className="h-4 w-2/3 bg-purple-200/70 rounded"></div>
-                <div className="h-3 w-1/2 bg-purple-100 rounded"></div>
+                <div className="h-4 w-2/3 bg-teal-200/70 rounded"></div>
+                <div className="h-3 w-1/2 bg-teal-100 rounded"></div>
               </div>
               {/* Right side (status/date placeholder) */}
-              <div className="h-4 w-16 bg-purple-200/70 rounded"></div>
+              <div className="h-4 w-16 bg-teal-200/70 rounded"></div>
             </div>
           ))
         ) : sortedCompletedTasks.length === 0 ? (
           <div className={CT_CLASSES.emptyState}>
             <div className={CT_CLASSES.emptyIconWrapper}>
-              <CheckCircle2 className="w-6 h-6 md:w-8 md:h-8 text-purple-500" />
+              <CheckCircle2 className="w-6 h-6 md:w-8 md:h-8 text-teal-500" />
             </div>
             <h3 className={CT_CLASSES.emptyTitle}>No completed tasks yet!</h3>
             <p>Complete some tasks and they'll appear here</p>

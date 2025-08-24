@@ -47,9 +47,9 @@ const SignUp = ({ onSwitchMode }) => {
   };
 
   return (
-    <div className="max-w-md w-full bg-white shadow-lg border border-purple-100 rounded-xl p-8">
+    <div className="max-w-md w-full bg-white shadow-lg border border-teal-100 rounded-xl p-8">
       <div className="mb-6 text-center">
-        <div className="w-16 h-16 bg-gradient-to-br from-fuchsia-500 to-purple-600 rounded-full mx-auto flex items-center justify-center mb-4">
+        <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-teal-500 rounded-full mx-auto flex items-center justify-center mb-4">
           <UserPlus className="w-8 h-8 text-white" />
         </div>
         <h2 className="text-2xl font-bold text-gray-800">Create Account</h2>
@@ -71,7 +71,7 @@ const SignUp = ({ onSwitchMode }) => {
       <form onSubmit={handleSubmit} className="space-y-4">
         {FIELDS.map(({ name, type, placeholder, icon: Icon }) => (
           <div key={name} className={INPUTWRAPPER}>
-            <Icon className="text-purple-500 w-5 h-5 mr-2" />
+            <Icon className="text-teal-500 w-5 h-5 mr-2" />
             <input
               type={type}
               placeholder={placeholder}
@@ -100,7 +100,7 @@ const SignUp = ({ onSwitchMode }) => {
         Already have an account?{" "}
         <button
           onClick={onSwitchMode}
-          className="text-purple-600 hover:text-purple-700 hover:underline font-medium transition-colors"
+          className="text-teal-600 hover:text-teal-700 hover:underline font-medium transition-colors"
         >
           {" "}
           Login

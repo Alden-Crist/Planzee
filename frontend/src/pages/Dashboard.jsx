@@ -101,7 +101,7 @@ const Dashboard = () => {
       <div className={HEADER}>
         <div className="min-w-0">
           <h1 className="text-xl md:text-3xl font-bold text-gray-800 flex items-center gap-2">
-            <HomeIcon className="text-purple-500 w-5 h-5 md:w-6 md:h-6 shrink-0" />
+            <HomeIcon className="text-teal-500 w-5 h-5 md:w-6 md:h-6 shrink-0" />
             <span className="truncate">Task Overview</span>
           </h1>
           <p className="text-sm text-gray-500 mt-1 ml-7 truncate ">
@@ -122,7 +122,7 @@ const Dashboard = () => {
             label,
             icon: Icon,
             iconColor,
-            borderColor = "border-purple-100",
+            borderColor = "border-teal-100",
             valueKey,
             textColor,
             gradient,
@@ -137,12 +137,12 @@ const Dashboard = () => {
                   <p
                     className={`${VALUE_CLASS} ${
                       gradient
-                        ? "bg-gradient-to-r from-fuchsia-500 to-purple-600 bg-clip-text text-transparent"
+                        ? "bg-gradient-to-r from-teal-400 to-cyan-500 bg-clip-text text-transparent"
                         : textColor
                     }`}
                   >
                     {loading ? (
-                      <span className="inline-block h-5 w-10 bg-purple-200 rounded animate-pulse"></span>
+                      <span className="inline-block h-5 w-10 bg-teal-200 rounded animate-pulse"></span>
                     ) : (
                       stats[valueKey]
                     )}
@@ -160,7 +160,7 @@ const Dashboard = () => {
         {/* FILTER */}
         <div className={FILTER_WRAPPER}>
           <div className="flex items-center gap-2 min-w-0">
-            <Filter className="w-5 h-5 text-purple-500" />
+            <Filter className="w-5 h-5 text-teal-500" />
             <h2 className="text-base md:text-lg font-semibold text-gray-800 truncate">
               {FILTER_LABELS[filter]}
             </h2>
@@ -199,20 +199,20 @@ const Dashboard = () => {
             Array.from({ length: 3 }).map((_, i) => (
               <div
                 key={i}
-                className="flex items-center justify-between p-4 border-b border-purple-100 rounded animate-pulse"
+                className="flex items-center justify-between p-4 border-b border-teal-100 rounded animate-pulse"
               >
                 <div className="flex-1 space-y-2">
-                  <div className="h-4 w-3/4 bg-purple-200 rounded"></div>
-                  <div className="h-3 w-1/2 bg-purple-100 rounded"></div>
+                  <div className="h-4 w-3/4 bg-teal-200 rounded"></div>
+                  <div className="h-3 w-1/2 bg-teal-100 rounded"></div>
                 </div>
-                <div className="h-4 w-16 bg-purple-200 rounded"></div>
+                <div className="h-4 w-16 bg-teal-200 rounded"></div>
               </div>
             ))
           ) : filteredTasks.length === 0 ? (
             // Empty state if no tasks
             <div className={EMPTY_STATE.wrapper}>
               <div className={EMPTY_STATE.iconWrapper}>
-                <CalendarIcon className="h-8 w-8 text-purple-500" />
+                <CalendarIcon className="h-8 w-8 text-teal-500" />
               </div>
               <h3 className="text-lg font-semibold text-gray-800 mb-2">
                 No tasks found
@@ -249,9 +249,9 @@ const Dashboard = () => {
         {/* ADD TASK DESKTOP */}
         <div
           onClick={() => setShowModal(true)}
-          className="hidden md:flex items-center justify-center p-4 border-2 border-dashed border-purple-200 rounded-xl hover:border-purple-500 bg-purple-50/50 cursor-pointer transition-colors"
+          className="hidden md:flex items-center justify-center p-4 border-2 border-dashed border-teal-200 rounded-xl hover:border-teal-500 bg-teal-50/50 cursor-pointer transition-colors"
         >
-          <Plus className="w-5 h-5 text-purple-500 mr-2" />
+          <Plus className="w-5 h-5 text-teal-500 mr-2" />
           <span className="tesxt-gray-600 font-medium">Add New Task</span>
         </div>
       </div>

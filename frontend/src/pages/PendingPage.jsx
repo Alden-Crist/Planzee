@@ -33,7 +33,7 @@ function PendingPage() {
       <div className={layoutClasses.headerWrapper}>
         <div>
           <h1 className="text-2xl md:tex-3xl font-bold text-gray-800 flex items-center gap-2">
-            <ListChecks className="text-purple-500" />
+            <ListChecks className="text-teal-500" />
             Pending Task
           </h1>
           <p className="text-sm text-gray-500 mt-1 ml-7">
@@ -43,7 +43,7 @@ function PendingPage() {
         </div>
         <div className={layoutClasses.sortBox}>
           <div className="flex items-center gap-2 text-gray-700 font-medium">
-            <Filter className="w-4 h-4 text-purple-500" />
+            <Filter className="w-4 h-4 text-teal-500" />
             <span className="text-sm">Sort by</span>
           </div>
           <select
@@ -70,9 +70,9 @@ function PendingPage() {
         </div>
       </div>
       <div className={layoutClasses.addBox} onClick={() => setShowModal(true)}>
-        <div className="flex items-center justify-center gap-3 text-gray-500 group-hover:text-purple-600 transition-colors">
+        <div className="flex items-center justify-center gap-3 text-gray-500 group-hover:text-teal-600 transition-colors">
           <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm group-hover:shadow-md transition-all duration-300">
-            <Plus className="text-purple-500" size={18} />
+            <Plus className="text-teal-500" size={18} />
           </div>
           <span className="font-medium">Add New Task</span>
         </div>
@@ -85,13 +85,13 @@ function PendingPage() {
             {Array.from({ length: 3 }).map((_, i) => (
               <div
                 key={i}
-                className="flex items-center justify-between p-3 border-b border-purple-100 rounded animate-pulse"
+                className="flex items-center justify-between p-3 border-b border-teal-100 rounded animate-pulse"
               >
                 <div className="flex-1 space-y-2">
-                  <div className="h-4 w-3/4 bg-purple-200 rounded"></div>
-                  <div className="h-3 w-1/2 bg-purple-100 rounded"></div>
+                  <div className="h-4 w-3/4 bg-teal-200 rounded"></div>
+                  <div className="h-3 w-1/2 bg-teal-100 rounded"></div>
                 </div>
-                <div className="h-4 w-16 bg-purple-200 rounded"></div>
+                <div className="h-4 w-16 bg-teal-200 rounded"></div>
               </div>
             ))}
           </div>
@@ -99,7 +99,7 @@ function PendingPage() {
           <div className={layoutClasses.emptyState}>
             <div className="max-w-x5 mx-auto py-6">
               <div className={layoutClasses.emptyIconBg}>
-                <Clock className="w-8 h-8 text-purple-500" />
+                <Clock className="w-8 h-8 text-teal-500" />
               </div>
               <h3 className="text-lg font-semibold text-gray-800 mb-2">
                 All caught up!

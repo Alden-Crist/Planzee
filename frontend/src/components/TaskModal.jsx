@@ -104,19 +104,19 @@ function TaskModal({ isOpen, onClose, taskToEdit, onSave, onLogout }) {
 
   return (
     <div className="fixed inset-0 backdrop-blur-sm bg-black/20 z-50 flex items-center justify-center p-4">
-      <div className="bg-white border-purple-100 rounded-xl max-w-md w-full shadow-lg relative p-6 animate-fadeIn">
+      <div className="bg-white border-teal-100 rounded-xl max-w-md w-full shadow-lg relative p-6 animate-fadeIn">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
             {taskData.id ? (
-              <Save className="text-purple-500 w-5 h-5" />
+              <Save className="text-teal-500 w-5 h-5" />
             ) : (
-              <PlusCircle className="text-purple-500 w-5 h-5" />
+              <PlusCircle className="text-teal-500 w-5 h-5" />
             )}
             {taskData.id ? "Edit Task" : "Create New Task"}
           </h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-purple-100 rounded-lg transition-colors text-gray-500 hover:text-purple-700"
+            className="p-2 hover:bg-teal-100 rounded-lg transition-colors text-gray-500 hover:text-teal-700"
           >
             <X className="w-5 h-5" />
           </button>
@@ -133,7 +133,7 @@ function TaskModal({ isOpen, onClose, taskToEdit, onSave, onLogout }) {
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Task Title
             </label>
-            <div className="flex items-center border border-purple-100 rounded-lg px-3 py-2.5 focus-within:ring-2 focus-within:ring-purple-500 focus-within:border-purple-500 transition-all duration-300">
+            <div className="flex items-center border border-teal-100 rounded-lg px-3 py-2.5 focus-within:ring-2 focus-within:ring-teal-500 focus-within:border-teal-500 transition-all duration-300">
               <input
                 type="text"
                 name="title"
@@ -148,7 +148,7 @@ function TaskModal({ isOpen, onClose, taskToEdit, onSave, onLogout }) {
 
           <div>
             <label className=" flex items-center gap-1  text-sm font-medium text-gray-700 mb-1">
-              <AlignLeft className="w-4 h-4 text-purple-500" /> Description
+              <AlignLeft className="w-4 h-4 text-teal-500" /> Description
             </label>
             <textarea
               name="description"
@@ -163,7 +163,7 @@ function TaskModal({ isOpen, onClose, taskToEdit, onSave, onLogout }) {
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className=" flex items-center gap-1  text-sm font-medium text-gray-700 mb-1">
-                <Flag className="w-4 h-4 text-purple-500" />
+                <Flag className="w-4 h-4 text-teal-500" />
                 Priority
               </label>
               <select
@@ -182,7 +182,7 @@ function TaskModal({ isOpen, onClose, taskToEdit, onSave, onLogout }) {
 
             <div>
               <label className=" flex items-center gap-1  text-sm font-medium text-gray-700 mb-1">
-                <Calendar className="w-4 h-4 text-purple-500" />
+                <Calendar className="w-4 h-4 text-teal-500" />
                 Due Date
               </label>
               <input
@@ -199,7 +199,7 @@ function TaskModal({ isOpen, onClose, taskToEdit, onSave, onLogout }) {
 
           <div>
             <label className=" flex items-center gap-1  text-sm font-medium text-gray-700 mb-2">
-              <CheckCircle className="w-4 h-4 text-purple-500" />
+              <CheckCircle className="w-4 h-4 text-teal-500" />
               Status
             </label>
             <div className="flex gap-4">
@@ -214,7 +214,7 @@ function TaskModal({ isOpen, onClose, taskToEdit, onSave, onLogout }) {
                     value={val}
                     checked={taskData.completed === val}
                     onChange={handleChange}
-                    className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded"
+                    className="h-4 w-4 text-teal-600 focus:ring-teal-500 border-gray-300 rounded"
                   />
                   <span className="ml-2 text-sm text-gray-700">{label}</span>
                 </label>
@@ -225,7 +225,7 @@ function TaskModal({ isOpen, onClose, taskToEdit, onSave, onLogout }) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-gradient-to-r from-fuchsia-500 to-purple-600 text-white font-medium py-2.5 px-4 roudned-lg flex ites-center justify-center gap-2 disabled:opacity-50 hover:shadow-md transition-all duration-200"
+            className="w-full bg-gradient-to-r from-teal-400 to-cyan-500 text-white font-medium py-2.5 px-4 rounded-lg flex ites-center justify-center gap-2 disabled:opacity-50 hover:shadow-md transition-all duration-200"
           >
             {loading ? (
               "Saving...."

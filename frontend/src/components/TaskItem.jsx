@@ -158,7 +158,7 @@ function TaskItem({ task, onRefresh, showCompleteCheckbox = true, onLogout }) {
                   <button
                     key={opt.action}
                     onClick={() => handleAction(opt.action)}
-                    className="w-full px-3 sm:px-4 py-2 text-left text-x5 sm:text-sm hover:bg-purple-50 flex items-center gap-2 transition-colors duration-200"
+                    className="w-full px-3 sm:px-4 py-2 text-left text-x5 sm:text-sm hover:bg-teal-50 flex items-center gap-2 transition-colors duration-200"
                   >
                     {opt.icon}
                     {opt.label}
@@ -171,7 +171,7 @@ function TaskItem({ task, onRefresh, showCompleteCheckbox = true, onLogout }) {
             <div
               className={`${TI_CLASSES.dateRow} ${
                 task.dueDate && isToday(new Date(task.dueDate))
-                  ? "text-fuchsia-600"
+                  ? "text-teal-600"
                   : "text-gray-500"
               } `}
             >
