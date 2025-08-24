@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { layoutClasses, SORT_OPTIONS } from "../assets/dummy";
+import { layoutClasses, SORT_OPTIONS, CT_CLASSES } from "../assets/dummy";
 import { ListChecks } from "lucide-react";
 import { useOutletContext } from "react-router-dom";
 import TaskItem from "../components/TaskItem";
@@ -7,7 +7,7 @@ import { Filter, Plus, Clock } from "lucide-react";
 import TaskModal from "../components/TaskModal";
 
 function PendingPage() {
-  const { tasks = [], refreshTask } = useOutletContext();
+  const { tasks = [], refreshTasks, loading } = useOutletContext();
   const [sortBy, setSortBy] = useState("newest");
   const [selectedTask, setSelectedTask] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -78,9 +78,26 @@ function PendingPage() {
         </div>
       </div>
       <div className="space-y-4">
-        {sortedPendingTasks.length === 0 ? (
+        {loading ? (
+          // Skeleton list (you can adjust how many to show)
+
+          <div className={CT_CLASSES.list}>
+            {Array.from({ length: 3 }).map((_, i) => (
+              <div
+                key={i}
+                className="flex items-center justify-between p-3 border-b border-purple-100 rounded animate-pulse"
+              >
+                <div className="flex-1 space-y-2">
+                  <div className="h-4 w-3/4 bg-purple-200 rounded"></div>
+                  <div className="h-3 w-1/2 bg-purple-100 rounded"></div>
+                </div>
+                <div className="h-4 w-16 bg-purple-200 rounded"></div>
+              </div>
+            ))}
+          </div>
+        ) : sortedPendingTasks.length === 0 ? (
           <div className={layoutClasses.emptyState}>
-            <div className="max-w-x5 mx-auto  py-6">
+            <div className="max-w-x5 mx-auto py-6">
               <div className={layoutClasses.emptyIconBg}>
                 <Clock className="w-8 h-8 text-purple-500" />
               </div>
@@ -108,11 +125,12 @@ function PendingPage() {
                 setSelectedTask(task);
                 setShowModal(true);
               }}
-              onRefresh={refreshTask}
+              onRefresh={refreshTasks}
             />
           ))
         )}
       </div>
+
       <TaskModal
         isOpen={!!selectedTask || showModal}
         onClose={() => {

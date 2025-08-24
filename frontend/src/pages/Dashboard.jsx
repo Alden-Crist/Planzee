@@ -18,6 +18,7 @@ import {
   TAB_ACTIVE,
   TAB_INACTIVE,
   EMPTY_STATE,
+  TI_CLASSES,
 } from "../assets/dummy";
 import { CalendarIcon, Filter, HomeIcon } from "lucide-react";
 import { Plus } from "lucide-react";
@@ -29,7 +30,7 @@ import TaskModal from "../components/TaskModal";
 const API_BASE = "http://localhost:4000/api/tasks";
 
 const Dashboard = () => {
-  const { tasks, refreshTasks } = useOutletContext();
+  const { tasks, refreshTasks, loading } = useOutletContext();
   const [showModal, setShowModal] = useState(false);
   const [selectedTask, setSelectTask] = useState(false);
   const [filter, setFilter] = useState("all");
@@ -142,7 +143,11 @@ const Dashboard = () => {
                         : textColor
                     }`}
                   >
-                    {stats[valueKey]}
+                    {loading ? (
+                      <span className="inline-block h-5 w-10 bg-purple-200 rounded animate-pulse"></span>
+                    ) : (
+                      stats[valueKey]
+                    )}
                   </p>
                   <p className={LABEL_CLASS}>{label}</p>
                 </div>
@@ -191,7 +196,22 @@ const Dashboard = () => {
 
         {/* TASK LIST */}
         <div className="space-y-4">
-          {filteredTasks.length === 0 ? (
+          {loading ? (
+            // SKELETON WHILE LOADING
+            Array.from({ length: 3 }).map((_, i) => (
+              <div
+                key={i}
+                className="flex items-center justify-between p-4 border-b border-purple-100 rounded animate-pulse"
+              >
+                <div className="flex-1 space-y-2">
+                  <div className="h-4 w-3/4 bg-purple-200 rounded"></div>
+                  <div className="h-3 w-1/2 bg-purple-100 rounded"></div>
+                </div>
+                <div className="h-4 w-16 bg-purple-200 rounded"></div>
+              </div>
+            ))
+          ) : filteredTasks.length === 0 ? (
+            // Empty state if no tasks
             <div className={EMPTY_STATE.wrapper}>
               <div className={EMPTY_STATE.iconWrapper}>
                 <CalendarIcon className="h-8 w-8 text-purple-500" />
@@ -201,7 +221,7 @@ const Dashboard = () => {
               </h3>
               <p className="text-sm text-gray-500 mb-4">
                 {filter === "all"
-                  ? "Create your first task to get started "
+                  ? "Create your first task to get started"
                   : "No tasks match this filter"}
               </p>
               <button
@@ -212,6 +232,7 @@ const Dashboard = () => {
               </button>
             </div>
           ) : (
+            // Render filtered tasks
             filteredTasks.map((task) => (
               <TaskItem
                 key={task._id || task.id}
@@ -226,6 +247,7 @@ const Dashboard = () => {
             ))
           )}
         </div>
+
         {/* ADD TASK DESKTOP */}
         <div
           onClick={() => setShowModal(true)}

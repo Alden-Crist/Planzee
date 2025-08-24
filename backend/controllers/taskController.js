@@ -9,7 +9,7 @@ export async function createTask(req, res) {
       description,
       priority,
       dueDate,
-      completed: completed === "Yes" || completed === true,
+      completed: Boolean(completed),
       owner: req.user.id,
     });
     const saved = await task.save();
@@ -52,7 +52,7 @@ export const updateTask = async (req, res) => {
     const data = { ...req.body };
 
     if (data.completed !== undefined) {
-      data.completed = data.completed === "Yes" || data.completed === true;
+      data.completed = Boolean(data.completed);
     }
 
     const updated = await Task.findOneAndUpdate(

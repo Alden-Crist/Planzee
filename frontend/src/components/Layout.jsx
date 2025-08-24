@@ -88,12 +88,12 @@ const Layout = ({ onLogout, user }) => {
   );
 
   //LOADING
-  if (loading)
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500"></div>
-      </div>
-    );
+  // if (loading)
+  //   return (
+  //     <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+  //       <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500"></div>
+  //     </div>
+  //   );
 
   //ERROR
   if (error)
@@ -120,7 +120,7 @@ const Layout = ({ onLogout, user }) => {
       <div className="ml-0 xl:ml-64 lg:ml-64 md:ml-16 pt-16 p-3 sm:p-4 md:p-4 transition-all duration-300">
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 sm:gap-6">
           <div className="xl:col-span-2 space-y-3 sm:space-y-4">
-            <Outlet context={{ tasks, refreshTasks: fetchTasks }} />
+            <Outlet context={{ tasks, refreshTasks: fetchTasks, loading }} />
           </div>
           <div className="xl:co-span-1 space-y-4 sm:space-y-6">
             <div className="bg-white rounded-xl p-4 sm:p-5 shadow-sm border border-purple-100">
