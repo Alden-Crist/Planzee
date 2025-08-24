@@ -27,14 +27,12 @@ import axios from "axios";
 import TaskItem from "../components/TaskItem";
 import TaskModal from "../components/TaskModal";
 
-const API_BASE = "http://localhost:4000/api/tasks";
-
 const Dashboard = () => {
   const { tasks, refreshTasks, loading } = useOutletContext();
   const [showModal, setShowModal] = useState(false);
   const [selectedTask, setSelectTask] = useState(false);
   const [filter, setFilter] = useState("all");
-
+  const API_URL = import.meta.env.VITE_API_URL;
   const stats = useMemo(
     () => ({
       total: tasks.length,
@@ -86,7 +84,7 @@ const Dashboard = () => {
     async (taskData) => {
       try {
         if (taskData.id)
-          await axios.put(`${API_BASE}/${taskData.id}/gp`, taskData);
+          await axios.put(`${API_URL}/api/tasks/${taskData.id}/gp`, taskData);
         refreshTasks();
         setShowModal(false);
         setSelectTask(null);
@@ -94,7 +92,7 @@ const Dashboard = () => {
         console.error("Error saving task", err);
       }
     },
-    [refreshTasks]
+    [API_URL, refreshTasks]
   );
 
   return (

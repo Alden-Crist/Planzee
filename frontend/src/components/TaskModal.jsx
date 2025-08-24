@@ -15,7 +15,6 @@ import {
 } from "lucide-react";
 
 function TaskModal({ isOpen, onClose, taskToEdit, onSave, onLogout }) {
-  /* global process */
   const API_BASE = import.meta.env.VITE_API_URL;
   const [taskData, setTaskData] = useState(DEFAULT_TASK);
 
@@ -98,7 +97,7 @@ function TaskModal({ isOpen, onClose, taskToEdit, onSave, onLogout }) {
         setLoading(false);
       }
     },
-    [taskData, today, getHeaderS, onLogout, onSave, onClose]
+    [taskData, today, API_BASE, getHeaderS, onSave, onClose, onLogout]
   );
 
   if (!isOpen) return null;

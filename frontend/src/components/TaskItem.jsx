@@ -81,13 +81,15 @@ function TaskItem({ task, onRefresh, showCompleteCheckbox = true, onLogout }) {
 
   const handleSave = async (updatedTask) => {
     try {
-      const payload = {
-        title: updatedTask.title,
-        description: updatedTask.description,
-        priority: updatedTask.priority,
-        dueDate: updatedTask.dueDate,
-        completed: !!updatedTask.completed, // ensure boolean
-      };
+      const payload = (({
+        title,
+        description,
+        priority,
+        dueDate,
+        completed,
+      }) => ({ title, description, priority, dueDate, completed }))(
+        updatedTask
+      );
       await axios.put(`${API_BASE}/api/tasks/${task._id}/gp`, payload, {
         headers: getAuthHeader(),
       });
