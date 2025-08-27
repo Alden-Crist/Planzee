@@ -53,15 +53,18 @@ const backendDummy = [
 // FRONTEND DUMMY DATA
 
 // assets/formConstants.js
-export const baseControlClasses =
-  "w-full px-4 py-2.5 border border-teal-100 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-sm";
+export const baseControlClasses = `
+  w-full px-4 py-2.5 
+  border rounded-lg shadow-sm text-sm font-medium
+  focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500
+  bg-white appearance-none cursor-pointer transition duration-200 ease-in-out
+`;
 
 export const priorityStyles = {
-  Low: "bg-teal-100 text-teal-700 border-teal-200", // Light teal background, dark teal text
-  Medium: "bg-blue-100 text-blue-700 border-blue-200", // Light blue background, dark blue text
-  High: "bg-blue-200 text-blue-800 border-blue-300", // Slightly stronger blue for high priority
+  Low: "bg-teal-50 text-teal-700 border-teal-200 hover:border-teal-400",
+  Medium: "bg-blue-50 text-blue-700 border-blue-200 hover:border-blue-400",
+  High: "bg-red-50 text-red-700 border-red-200 hover:border-red-400",
 };
-
 // data/defaultTask.js
 export const DEFAULT_TASK = {
   title: "",

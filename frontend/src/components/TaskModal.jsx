@@ -13,6 +13,7 @@ import {
   X,
   Flag,
 } from "lucide-react";
+import PrioritySelect from "./PrioritySelect";
 
 function TaskModal({ isOpen, onClose, taskToEdit, onSave, onLogout }) {
   const API_BASE = import.meta.env.VITE_API_URL;
@@ -161,7 +162,7 @@ function TaskModal({ isOpen, onClose, taskToEdit, onSave, onLogout }) {
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <div>
+            {/* <div>
               <label className=" flex items-center gap-1  text-sm font-medium text-gray-700 mb-1">
                 <Flag className="w-4 h-4 text-teal-500" />
                 Priority
@@ -178,7 +179,8 @@ function TaskModal({ isOpen, onClose, taskToEdit, onSave, onLogout }) {
                 <option>Medium</option>
                 <option>High</option>
               </select>
-            </div>
+            </div> */}
+            <PrioritySelect taskData={taskData} setTaskData={setTaskData} />
 
             <div>
               <label className=" flex items-center gap-1  text-sm font-medium text-gray-700 mb-1">
@@ -225,7 +227,7 @@ function TaskModal({ isOpen, onClose, taskToEdit, onSave, onLogout }) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-gradient-to-r from-teal-400 to-cyan-500 text-white font-medium py-2.5 px-4 rounded-lg flex ites-center justify-center gap-2 disabled:opacity-50 hover:shadow-md transition-all duration-200"
+            className="w-full bg-gradient-to-r from-teal-400 to-cyan-500 text-white font-medium py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 disabled:opacity-50 hover:shadow-md transition-all duration-200"
           >
             {loading ? (
               "Saving...."
